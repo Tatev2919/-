@@ -1,0 +1,36 @@
+def field_of_wonders(matrix, *args, **kwargs):
+  for i in args:
+    x = int(i[0])
+    y = int(i[1])
+    z = i[2]
+    for key in kwargs:
+      if (z == key):
+        matrix[x][y] = (kwargs[key](matrix[x][y]))
+  return matrix
+
+print(*field_of_wonders(
+    [
+        [1, 1, 1, 1, 1],
+        [2, 1, 0, 4, 1]
+    ],
+    (1, 0, 'x6'),
+    (0, 2, 'plus_two'),
+    (1, 3, 'abracodabra'),
+    plus_two=lambda x: x + 2,
+    zero_fill=lambda x: 0,
+    x6=lambda x: x * 6
+), sep='\n')
+
+print(*field_of_wonders(
+    [
+        [1, 1, 1, 1],
+        [2, 1, 0, 1],
+        [1, 0, 1, 3]
+    ],
+    (0, 2, 'zero_fill'),
+    (1, 1, 'mult_two'),
+    (1, 3, 'chikibamboni'),
+    mult_two=lambda x: x * 2,
+    zero_fill=lambda x: 0,
+    pow6=lambda x: x ** 6
+), sep='\n')

@@ -1,12 +1,13 @@
 def field_of_wonders(matrix, *args, **kwargs):
-  for i in args:
-    x = int(i[0])
-    y = int(i[1])
-    z = i[2]
-    for key in kwargs:
-      if (z == key):
-        matrix[x][y] = (kwargs[key](matrix[x][y]))
-  return matrix
+    for i in args:
+        x = int(i[0])
+        y = int(i[1])
+        z = i[2]
+        for key in kwargs:
+            if (z == key):
+                matrix[x][y] = (kwargs[key](matrix[x][y]))
+    return matrix
+
 
 print(*field_of_wonders(
     [

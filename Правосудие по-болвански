@@ -1,0 +1,47 @@
+def justice(data, *args, **kwargs):
+    l = []
+    f_l = []
+    for i in args:
+      x = i[0]
+      y = (int)(i[1])
+      flag = False
+      for key in kwargs:
+        if (x == key):
+            flag = True
+            f_l = list(filter(kwargs[key], data[y]))
+      if (flag == False):
+          l.append(data[y])
+      else:
+        l.append(f_l)  
+    return l
+
+print(*justice(
+    [
+        ['The', 'Judge', 'listened', 'to', 'Pinocchio', 'with', 'deep', 'benevolence', 'and', 'the', 'greatest', 'concern'],
+        ['and', '23', 'looked', 'very', 'much', '345', 'and', '15', 'moved'],
+        ['and', 'when', 'the', 'Puppet', 'had', 'said', 'all'],
+        ['the', 'judge', 'reached', 'out', 'his', 'hand', 'and', 'rang', 'the', 'table', 'bell.']
+    ],
+    ('even_len', 3),
+    ('digits', 1),
+    ('first_up', 0),
+    ('abracodabra', 2),
+    first_up=lambda x: x[0].isupper(),
+    even_len=lambda x: len(x) % 2 == 0,
+    digits=lambda x: x.isdigit()
+), sep='\n')
+#This case doesn't work . For one subarray using 2 lambda expressions our function changes subarray not parallelly
+print(*justice(
+    [
+        [2, 6, -13, 48],
+        [1, 1, 2, 3, 5, 8, 13, 21],
+        [-12, 5, -3, -2, 7, -7, -3, 8, 15, -17]
+    ],
+    ('negative', 2),
+    ('odd_digits', 1),
+    ('first_up', 0),
+    ('large', 2),
+    large=lambda x: abs(x) > 3,
+    negative=lambda x: x < 0,
+    odd_digits=lambda x: x % 2
+), sep='\n')

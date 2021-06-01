@@ -1,0 +1,20 @@
+data = input()
+
+l = data.split('...')
+print(l)
+d = []
+for i in l:
+  m = i[i.index(':')+2:].split(',')
+  for val in m:
+    if val.strip() in d:
+      d.remove(val.strip())
+      continue
+    else:
+      d.append(val.strip())
+d.sort(reverse=True)
+
+for i in range(len(d)): 
+    if (i == len(d) - 1):
+      print(d[i].capitalize() , end= " ")
+    else:    
+      print(d[i].capitalize() ,end=' - ')

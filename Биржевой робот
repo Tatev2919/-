@@ -1,0 +1,14 @@
+price = (int)(input())
+flag = flag2 = False
+buy_p = sell_p = 0
+while price!= 0:
+  l_price = price
+  price = (int)(input())
+  if (price > l_price) and (flag==False) and (flag2==False):
+    buy_p = price
+    flag = True
+  if (price < l_price) and (flag == True) and (flag2 ==False):
+    sell_p = price
+    flag2 = True
+    
+print(sell_p," s_p " ,buy_p," b_p ", sell_p - buy_p)

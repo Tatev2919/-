@@ -1,0 +1,15 @@
+str1 = input()
+d = {}
+while str1!= "ВСЁ!":
+  a = str1[:str1.index(':')]
+  print(a)
+  b = str1[str1.index(':') + 2:].strip()
+  print(b)
+  str1 = input()
+  if a not in d:
+      d[a] = b
+  else:
+      d[a] += '; ' + b
+
+for key, value in d.items():
+    print(key, "- ", value)

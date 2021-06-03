@@ -1,0 +1,25 @@
+import random 
+import secrets
+def generate_animal(n, names):
+  a = ['biolocation', 'teleportation', 'transformation', 'zoom in', 'zoom out', 'fireworks', 'mind reading']
+  item = ''
+  list1 = []
+  for i in range(n):
+    item = secrets.choice(names)
+    pos_magic = random.randint(0,20)
+    while (pos_magic in list1):
+      pos_magic = random.randint(0,20)
+    list1.append(pos_magic)  
+    magic_desc = secrets.choice(a)
+    magic = random.randrange(10,40,2)
+    item += ' ' + (str)(magic_desc) + ' ' + (str)(pos_magic) + ' ' + (str)(magic)
+    print (item)
+
+
+names = ['Pegasus', 'unicorn', 'Cerberus', 'Hydra']
+generate_animal(3,names)
+
+# The input should be in this version  
+# names = ['Pegasus', 'unicorn', 'Cerberus', 'Hydra']
+# for item in generate_animal(3, names):
+#     print(*item)
